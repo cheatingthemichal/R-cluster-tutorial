@@ -8,21 +8,21 @@ Based on Jaime's Python tutorial here: https://github.com/ChaosDonkey06/c2b2_clu
     -  ssh -p 59922 mah2350@login.c2b2.columbia.edu
     
 2. Once you log onto the cluster you will automatically be placed in your home directory.
-```
+```bash
 pwd
 =>/ifs/home/msph/ehs/mah2350
 ```
 The ending is based on your deparment and uni. Make sure to change it accorindgly throughout the tutorial. Move to your scratch directory, where you will want to store results and data.
-```
+```bash
 cd /ifs/scratch/msph/ehs/mah2350
 ```
 Create a folder to store your R libraries.
-```
+```bash
 mkdir R_libs
 ```
 
 3. Install your R libraries with the following steps:
-```
+```bash
 qrsh
     module load R/4.1.1 (or whatever R version you are using)
     R
@@ -48,6 +48,6 @@ ${R} --vanilla < filepath/test.R >  filepath/test.log 2>  filepath/test.log
 This will send the error and output of test.R to test.log. Otherwise, the error and output will automatically appear in your home directory.
 
 6. Run your bash script.
-```
+```bash
 qsub run.sh
 ```
