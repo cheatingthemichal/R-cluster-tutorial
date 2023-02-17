@@ -1,4 +1,5 @@
-# How to cluster... in Python
+# How to run R code on the c2b2 cluster.
+# Based on Jaime's Python tutorial here: https://github.com/ChaosDonkey06/c2b2_cluster_example
 
 The c2b2 cluster have two principal directories we are going to use. Here ehs stands for Environmental Health Sciences cluster and jc5647 is the Columbia user, replace them with your department and your username.
 
