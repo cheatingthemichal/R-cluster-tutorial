@@ -17,8 +17,19 @@ The ending is based on your deparment and uni. Make sure to change it accorindgl
 cd /ifs/scratch/msph/ehs/mah2350
 ```
 Create a folder to store your R libraries.
+```
+mkdir R_libs
+```
 
-
+3. Install your R libraries with the following steps:
+```
+qrsh
+    module load R/4.1.1 (or whatever R version you are using)
+    R
+        install.packages("package_name", lib="/ifs/scratch/msph/ehs/mah2350/R_libs")
+        quit()
+    exit
+```
 
 2. **Installing packages:** Packages are installed in the home director, I prefer using anaconda which is installed in the cluster. Also, as a general good practice I like using envs, see CREATE_ENV.md for how to crete a env.
 
