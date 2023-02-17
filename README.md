@@ -31,7 +31,7 @@ qrsh
     exit
 ```
 
-4. Create your R file. Make sure to include the following parameter in order to specify your library locations.
+4. Create your R file. When loading libraries, include the following parameter in order to specify their location.
 ```
 library(package_name, lib.loc="/ifs/scratch/msph/ehs/mah2350/R_libs")
 ```
