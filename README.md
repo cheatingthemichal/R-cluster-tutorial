@@ -51,3 +51,35 @@ This will send the error and output of test.R to test.log. Otherwise, the error 
 ```bash
 qsub run.sh
 ```
+
+7. Check the status of your bash script with 
+```bash
+qstat
+```
+
+## Possible debugging steps
+
+If R crashes while you try to install a package, it may be running out of memory. Increase memory size in your qrsh session by typing
+```bash
+qrsh -l mem=4G
+```
+instead of qrsh.
+
+If you get a weird C++ error while installing a package, type
+```bash
+source /opt/rh/devtoolset-8/enable
+```
+while in qrsh. Together, you would do:
+```bash
+qrsh -l mem=4G
+    source /opt/rh/devtoolset-8/enable
+    module load R/4.1.1 (or whatever R version you are using)
+    R
+        install.packages("package_name", lib="/ifs/scratch/msph/ehs/mah2350/R_libs")
+        quit()
+    exit
+```
+
+If your package is dependent on a newer version of GDAL:
+.........
+
