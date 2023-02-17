@@ -43,5 +43,11 @@ library(package_name, lib.loc="/ifs/scratch/msph/ehs/mah2350/R_libs")
 module load R/4.1.1
 R=/nfs/apps/R/4.1.1/bin/R
 
-${R} --vanilla < /ifs/scratch/msph/ehs/mah2350/CARarmodel.R >  /ifs/scratch/msph/ehs/mah2350/test.log 2>  /ifs/scratch/msph/ehs/mah2350/test.log
+${R} --vanilla < filepath/test.R >  filepath/test.log 2>  filepath/test.log
+```
+This will send the error and output of test.R to test.log. Otherwise, the error and output will automatically appear in your home directory.
+
+6. Run your bash script.
+```
+qsub run.sh
 ```
