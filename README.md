@@ -80,6 +80,27 @@ qrsh -l mem=4G
     exit
 ```
 
-If your package is dependent on a newer version of GDAL:
-.........
+If your package is dependent on a newer version of GDAL (e.g. CARBayesST), you will have to manually install it yourself.
+```bash
+qrsh
+    cd /ifs/scratch/msph/ehs/mah2350
+    wget http://download.osgeo.org/gdal/3.5.0/gdal-3.5.0.tar.gz
+    tar -xvzf gdal-3.5.0.tar.gz
+    cd gdal-3.5.0
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+    cmake --build . --target install
+```
+You will have to let your cluster know the location your new GDAL version by changing your .bashrc file.
+```bash
+cd
+vi .bashrc
+```
+Include the following line at the end of your .bashrc file:
+```
+export PATH="/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:$PATH"
+```
 
+If you cannot install a newer version of GDAL because you do not have a new enough version of cmake, you will have to manually install cmake yourself.
