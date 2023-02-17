@@ -92,8 +92,9 @@ qrsh
     cmake ..
     cmake --build .
     cmake --build . --target install
+    exit
 ```
-You will have to let your cluster know the location your new GDAL version by changing your .bashrc file.
+You will have to let your cluster know the location your new GDAL version by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
 vi .bashrc
