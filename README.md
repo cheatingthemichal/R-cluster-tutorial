@@ -31,41 +31,17 @@ qrsh
     exit
 ```
 
-2. **Installing packages:** Packages are installed in the home director, I prefer using anaconda which is installed in the cluster. Also, as a general good practice I like using envs, see CREATE_ENV.md for how to crete a env.
-
-    To install a python package in your home dir you can follow the step below:
-    ```bash
-        1) Type qrsh
-        2) Type cd /nfs/apps/anaconda/anaconda3/bin
-        3) source activate your_env_name # this is optional if you're using or not an environment.
-        4) Type pip install  --install-option="--prefix=/path_to_directory" package_name
-    ```
-
-### Create python script **hello_world.py**
-The hello_world.py script looks like:
-
-```python
-print("hello world")
+4. Create your R file. Make sure to include the following parameter in order to specify your library locations.
+```
+library(package_name, lib.loc="/ifs/scratch/msph/ehs/mah2350/R_libs")
 ```
 
-## Creat submission script run_script.sh
-
-Of course there're multiple ways of creating this scripts, I like having one script per run so I can track what I've done. The run_script.sh script looks like:
-
+5. Create your bash script. It can look something like this:
 ```bash
-#!/bin/bash
-#$ -cwd -S /bin/bash
-#$ -l mem=8G
-#$ -l time=18:30:
-#$ -pe smp 4
-#$ -N name_you_want -j y
-#$ -M jc5647@columbia.edu -m aes
+#!/bin/sh
 
-module load anaconda/conda3                      # load anaconda.
-source activate amr_hospitals                    # activate your environment.
-cd /ifs/scratch/msph/ehs/jc5647/your_script_path # move to your project directory.
+module load R/4.1.1
+R=/nfs/apps/R/4.1.1/bin/R
 
-python hello_world.py
+${R} --vanilla < /ifs/scratch/msph/ehs/mah2350/CARarmodel.R >  /ifs/scratch/msph/ehs/mah2350/test.log 2>  /ifs/scratch/msph/ehs/mah2350/test.log
 ```
-
-In general there are 4 important parameters
