@@ -3,11 +3,22 @@ Based on Jaime's Python tutorial here: https://github.com/ChaosDonkey06/c2b2_clu
 
 ## Basic Steps
 
-1. Connect to the cluster. Replace mah2350 with your uni. The password should be the same as your email.
+1. Connect to the cluster. Replace mah2350 with your uni. The password should be the same as to your email.
 
     -  ssh -p 59922 mah2350@login.c2b2.columbia.edu
     
-2. Once you log onto the cluster you will automatically be placed in your home directory. Create library folder in the scratch directory. 
+2. Once you log onto the cluster you will automatically be placed in your home directory.
+```
+pwd
+=>/ifs/home/msph/ehs/mah2350
+```
+The ending is based on your deparment and uni. Make sure to change it accorindgly throughout the tutorial. Move to your scratch directory, where you will want to store results and data.
+```
+cd /ifs/scratch/msph/ehs/mah2350
+```
+Create a folder to store your R libraries.
+
+
 
 2. **Installing packages:** Packages are installed in the home director, I prefer using anaconda which is installed in the cluster. Also, as a general good practice I like using envs, see CREATE_ENV.md for how to crete a env.
 
