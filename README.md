@@ -80,7 +80,7 @@ qrsh -l mem=4G
     exit
 ```
 
-If your package is dependent on a newer version of GDAL (e.g. CARBayesST), you will have to manually install it yourself.
+Your package may have dependencies that are not installed on the cluster (or that are installed but only a version that is too old). For example, CARBayesST is dependent on GDAL. You will have to download these dependencies yourself. The general steps are the same for all dependncies. Note that you must download from source using wget because you probably do not have the admin priviledges to use sudo apt.
 ```bash
 qrsh
     cd /ifs/scratch/msph/ehs/mah2350
@@ -89,12 +89,18 @@ qrsh
     cd gdal-3.5.0
     mkdir build
     cd build
+    module load cmake/3.4.2
     cmake ..
     cmake --build .
     cmake --build . --target install
     exit
 ```
-You will have to let your cluster know the location your new GDAL version by changing your .bashrc file (which is in your home directory).
+You may find that your dependencies require their own dependencies. I had to download 5 new libraries just to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and libisqlite3.so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
+```bash
+ cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include ..
+```
+
+Once the original dependcy is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
 vi .bashrc
@@ -104,4 +110,4 @@ Include the following line at the end of your .bashrc file:
 export PATH="/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:$PATH"
 ```
 
-If you cannot install a newer version of GDAL because you do not have a new enough version of cmake, you will have to manually install cmake yourself.
+If you run into errors, ChatGPT is surprisngly helpful in debugging package managment.
