@@ -80,7 +80,7 @@ qrsh -l mem=4G
     exit
 ```
 
-Your package may have dependencies that are not installed on the cluster (or that are installed but only a version that is too old). For example, CARBayesST is dependent on GDAL. You will have to download these dependencies yourself. The general steps are the same for all dependncies. Note that you must download from source using wget because you probably do not have the admin priviledges to use sudo apt.
+Your package may have dependencies that are not installed on the cluster (or that are installed but only a version that is too old). For example, CARBayesST is dependent on GDAL. You will have to download these dependencies yourself. The general steps are the same for all dependencies. Note that you must download from source using wget because you probably do not have the admin priviledges to use sudo apt.
 ```bash
 qrsh
     cd /ifs/scratch/msph/ehs/mah2350
@@ -109,5 +109,7 @@ Include the following line at the end of your .bashrc file:
 ```
 export PATH="/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:$PATH"
 ```
+
+Now you should be able to run install.packages succesfully.
 
 If you run into errors, ChatGPT is surprisngly helpful in debugging package managment.
