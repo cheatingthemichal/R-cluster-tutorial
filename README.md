@@ -95,7 +95,7 @@ qrsh
     cmake --build . --target install
     exit
 ```
-You may find that your dependencies require their own dependencies. I had to download 5 new libraries just to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and libisqlite3.so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
+You may find that your dependencies require their own dependencies. I had to download 5 new libraries in order to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and libisqlite3.so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
 ```bash
  cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include ..
 ```
