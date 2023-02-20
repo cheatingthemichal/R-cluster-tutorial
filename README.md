@@ -100,7 +100,7 @@ You may find that your dependencies require their own dependencies. I had to dow
  cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite-autoconf-3400100/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include ..
 ```
 
-Once the original dependcy is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
+Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
 vi .bashrc
