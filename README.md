@@ -111,9 +111,8 @@ qrsh
 
 You may find that your dependencies require their own dependencies. I had to download 5 new libraries in order to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and libisqlite3.so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
 ```bash
- cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include ..
+ cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include -D PROJ_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/include -D PROJ_LIBRARY=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/lib64/libproj.so .. -DCMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0
 ```
-
 Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
