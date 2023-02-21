@@ -90,7 +90,7 @@ qrsh
     mkdir build
     cd build
     module load cmake/3.4.2
-    cmake ..
+    cmake .. -D CMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0
     cmake --build .
     cmake --build . --target install
     exit
@@ -100,19 +100,25 @@ Some dependencies may not use cmake to install. For example to install SQLite, y
 ```bash
 qrsh
     cd /ifs/scratch/msph/ehs/mah2350
-    wget http://download.osgeo.org/gdal/3.5.0/gdal-3.5.0.tar.gz
-    tar -xvzf gdal-3.5.0.tar.gz
-    cd gdal-3.5.0
-    ./configure --prefix=/path/to/installation/directory
+    wget https://www.sqlite.org/2022/sqlite-autoconf-3400100.tar.gz
+    tar -xvzf sqlite-autoconf-3400100.tar.gz
+    cd sqlite-autoconf-3400100
+    ./configure --prefix=/ifs/scratch/msph/ehs/mah2350/sql
     make
     make install
     exit
 ```
 
-You may find that your dependencies require their own dependencies. I had to download 5 new libraries in order to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and libisqlite3.so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
+You may find that your dependencies require their own dependencies. I had to download 5 new libraries in order to install CARBayesST. When downloading a library with a manually installed dependency, you must specify the location of that dependency's include folder and .so file. This is done in the "cmake .." step. For example, installing proj requires sqlite and tiff. These dependencies were specified as such:
 ```bash
- cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include -D PROJ_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/include -D PROJ_LIBRARY=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/lib64/libproj.so .. -DCMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0
+cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include -D CMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0
 ```
+
+Sometimes the cluster is finicky with these dependencies, in which case you may find the following command useful:
+```bash
+export R_LIBS_USER=/path/to/dir:$R_LIBS_USER
+```
+
 Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
