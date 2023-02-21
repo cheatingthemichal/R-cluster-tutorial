@@ -65,7 +65,7 @@ qrsh -l mem=4G
 ```
 instead of qrsh.
 
-If you get a weird C++ error while installing a package, type
+If you get a weird C++ error while installing a package (e.g. something with alignof(std::max_align_t)), type
 ```bash
 source /opt/rh/devtoolset-8/enable
 ```
