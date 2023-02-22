@@ -89,7 +89,7 @@ qrsh
     cd gdal-3.5.0
     mkdir build
     cd build
-    module load cmake/3.4.2
+    module load cmake/3.24.1
     cmake .. -D CMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0
     cmake --build .
     cmake --build . --target install
