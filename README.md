@@ -123,7 +123,8 @@ Sometimes the cluster is finicky with these dependencies, in which case you may 
 export PROJ_LIB="/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/share/proj"
 export PATH=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0/bin:/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/bin:/ifs/scratch/msph/ehs/mah2350/ssl/bin:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/bin:$PATH
 export LD_LIBRARY_PATH=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/lib64:/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0/lib64:/ifs/scratch/msph/ehs/mah2350/sqlite/lib:/ifs/scratch/msph/ehs/mah2350/ssl/lib64:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64:$LD_LIBRARY_PATH
-export R_LIBS_USER=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0:/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:/ifs/scratch/msph/ehs/mah2350/sqlite:/ifs/scratch/msph/ehs/mah2350/ssl:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0:$R_LIBS_USER```
+export R_LIBS_USER=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0:/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:/ifs/scratch/msph/ehs/mah2350/sqlite:/ifs/scratch/msph/ehs/mah2350/ssl:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0:$R_LIBS_USER
+```
 
 Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
