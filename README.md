@@ -122,7 +122,7 @@ Once the original dependency is installed, you will have to let your cluster kno
 ```bash
 vi ~/.bashrc
 ```
-Include the something like this at the end of your .bashrc file. It will be different for you, but finding what you need to add is more of an art than a science:
+Include the something like this at the end of your .bashrc file. It will be different for you, but should follow this general formula. You may need to add additional flags in accordance to the errors that you recieve. 
 ```bash
 export PROJ_LIB="/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/share/proj"
 export PATH=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0/bin:/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/bin:/ifs/scratch/msph/ehs/mah2350/ssl/bin:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/bin:$PATH
