@@ -128,8 +128,7 @@ export R_LIBS_USER=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0:/ifs/scratch/msph/eh
 
 Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
-cd
-vi .bashrc
+vi ~/.bashrc
 ```
 Include the something like this at the end of your .bashrc file. It will be diifferent for you, but finding what you need to add is more of an art than a science:
 ```
