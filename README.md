@@ -134,6 +134,8 @@ Save this with
 source ~/.bashrc
 ```
 
+You may also find it helpful to use the configure.args argument in install.packages.
+
 Now you should be able to run install.packages succesfully.
 
 If you run into errors, ChatGPT is surprisngly helpful in debugging package managment.
