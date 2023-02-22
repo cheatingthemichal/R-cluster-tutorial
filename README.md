@@ -113,20 +113,30 @@ You may find that your dependencies require their own dependencies. I had to dow
 ```bash
 cmake -D SQLITE3_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/sqlite/include -D SQLITE3_LIBRARY=/ifs/scratch/msph/ehs/mah2350/sqlite/lib/libsqlite3.so -D TIFF_LIBRARY=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64/libtiff.so -D TIFF_INCLUDE_DIR=/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include .. -DCMAKE_INSTALL_PREFIX=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0
 ```
+Alternativly, if you are using ./configure, you would change the ./configure line:
+```bash
+./configure --prefix=/ifs/scratch/msph/ehs/mah2350/proj SQLITE3_CFLAGS=-l/ifs/scratch/msph/ehs/mah2350/sqlite/include SQLITE3_LIBS="-L/ifs/scratch/msph/ehs/mah2350/sqlite/lib64" TIFF_CFLAGS=-l/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/include TIFF_LIBS="-L/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64"
+```
 
 Sometimes the cluster is finicky with these dependencies, in which case you may find the following command useful:
 ```bash
-export R_LIBS_USER=/path/to/dir:$R_LIBS_USER
-```
+export PROJ_LIB="/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/share/proj"
+export PATH=/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0/bin:/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/bin:/ifs/scratch/msph/ehs/mah2350/ssl/bin:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/bin:$PATH
+export LD_LIBRARY_PATH=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0/lib64:/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0/lib64:/ifs/scratch/msph/ehs/mah2350/sqlite/lib:/ifs/scratch/msph/ehs/mah2350/ssl/lib64:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0/lib64:$LD_LIBRARY_PATH
+export R_LIBS_USER=/ifs/scratch/msph/ehs/mah2350/proj-9.0.0:/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:/ifs/scratch/msph/ehs/mah2350/sqlite:/ifs/scratch/msph/ehs/mah2350/ssl:/ifs/scratch/msph/ehs/mah2350/tiff-4.3.0:$R_LIBS_USER```
 
 Once the original dependency is installed, you will have to let your cluster know its location by changing your .bashrc file (which is in your home directory).
 ```bash
 cd
 vi .bashrc
 ```
-Include the following line at the end of your .bashrc file:
+Include the something like this at the end of your .bashrc file. It will be diifferent for you, but finding what you need to add is more of an art than a science:
 ```
 export PATH="/ifs/scratch/msph/ehs/mah2350/gdal-3.5.0:$PATH"
+```
+Save this with
+```
+source ~/.bashrc
 ```
 
 Now you should be able to run install.packages succesfully.
