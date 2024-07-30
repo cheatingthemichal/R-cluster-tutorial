@@ -12,7 +12,7 @@ Based on Jaime's Python tutorial here: https://github.com/ChaosDonkey06/c2b2_clu
 pwd
 =>/ifs/home/msph/ehs/mah2350
 ```
-The ending is based on your deparment and uni. Make sure to change it accorindgly throughout the tutorial. Move to your scratch directory, where you will want to store results and data.
+The ending is based on your deparment and uni. Make sure to change it accordingly throughout the tutorial. Move to your scratch directory, where you will want to store results and data.
 ```bash
 cd /ifs/scratch/msph/ehs/mah2350
 ```
